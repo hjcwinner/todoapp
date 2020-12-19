@@ -12,28 +12,27 @@ function App() {
   const [item, setItem] = useState("")
   const [editItem, setEditItem] = useState(false)
 
-  const onChange = (e) => {
+  const onChange = e => {
     setItem(e.target.value)
   }  
 
   const onSubmit = e => {
     e.preventDefault()
 
-    // const newItem = {
-    //   id:id,
-    //   title:item
-    // }
-    // console.log(newItem)
+    setId(uuid())
+    const newItem = {  
+      id : id,
+      title : item
+    }
 
-    // const updatedItems = [...items, newItem]
-
-    setItems({
-      items: item,
-      id : id
-    })
-    console.log(items)
+    const updatedItems = [...items, newItem]
+    setItems(updatedItems)
     setItem("")
     setEditItem(false)
+  }
+
+  const clearList = () => {
+    setItems([])
   }
 
   return (
@@ -46,7 +45,7 @@ function App() {
             onChange={onChange}
             onSubmit={onSubmit}
           />
-          <TodoList />
+          <TodoList items={items} clearList={clearList}/>
         </div>
       </div>
     </div>
