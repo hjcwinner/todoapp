@@ -35,6 +35,11 @@ function App() {
     setItems([])
   }
 
+  const listDelete = (id) => {
+    let copyItems = items.filter(item => item.id !== id)
+    setItems(copyItems)
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -45,7 +50,7 @@ function App() {
             onChange={onChange}
             onSubmit={onSubmit}
           />
-          <TodoList items={items} clearList={clearList}/>
+          <TodoList items={items} clearList={clearList} listDelete={listDelete}/>
         </div>
       </div>
     </div>
