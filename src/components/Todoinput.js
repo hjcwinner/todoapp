@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 export default class TodoInput extends Component {
   render() {
-    const {item, onChange, onSubmit} = this.props
+    const {item, onChange, onSubmit, editItem} = this.props
+    console.log(editItem)
     return (
       <div className="card card-body my-3">
           <form onSubmit={onSubmit}>
@@ -20,8 +21,10 @@ export default class TodoInput extends Component {
                     onChange={onChange}
                   />
               </div>
-              <button type="submit" className="btn btn-block btn-primary mt-3">
-                  제출
+              <button type="submit" 
+              className={
+                editItem ? "btn btn-block btn-success mt-3" : "btn btn-block btn-primary mt-3"}>
+                  {editItem ? "수정" : "제출"}
               </button>
           </form>
       </div>
