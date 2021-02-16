@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class TodoInput extends Component {
   render() {
     const {item, onChange, onSubmit, editItem} = this.props
-    console.log(editItem)
     return (
       <div className="card card-body my-3">
           <form onSubmit={onSubmit}>
